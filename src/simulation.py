@@ -1,21 +1,10 @@
-# code to run simulation
+"""
+Monte Carlo simulation of stochastic price processes.
+"""
 
 import numpy as np
 
-def simulate_gbm(params, seed=None):
-    # simulate geometric brownian motion (GBM) price paths:
-    #
-    # dS = mu * S * dt + sigma * S * dW
-    #   =>   S_{t+1} = S_t * exp{(mu - sigma²/2)dt + sigma*sqrt{dt}*z_t}
-    #
-    # S is the asset price at time t, 
-    # W a Wiener process (Brownian motion),
-    # z one realization of the the Brownian increment dW ≈ sqrt{dt}*z_t (one draw from normal distr.), and
-    # a random seed for reproducibility
-
-    # return params are:
-    # times : array of time points
-    # S     : simulated price paths, shape (n_steps, n_paths)
+def simulate_gbm(params, seed:int=None):
     mu, sigma, S0, T, dt, n_paths = (params.mu, params.sigma, params.S0, params.T, params.dt, params.n_paths)
     rng = np.random.default_rng(seed)
 
@@ -30,7 +19,7 @@ def simulate_gbm(params, seed=None):
 
     return times, S
 
-def simulate_ou(params, seed=None):
+def simulate_ou(params, seed:int=None):
     theta, mu, sigma, X0, T, dt, n_paths = (params.theta, params.mu, params.sigma, params.X0, params.T, params.dt, params.n_paths)
     rng = np.random.default_rng(seed)
 
@@ -45,9 +34,7 @@ def simulate_ou(params, seed=None):
 
     return times, X
 
-def simulate_heston(params, seed=None):
-    # dS = mu * S * dt + sqrt(v) * S * dW_1
-    # dv = kappa * (theta - v) * dt + xi * sqrt(v) * dW_2
+def simulate_heston(params, seed:int=None):
     mu, kappa, theta, xi, rho, S0, v0, T, dt, n_paths = (params.mu, params.kappa, params.theta, params.xi, params.rho, params.S0, params.v0, params.T, params.dt, params.n_paths)
 
     rng = np.random.default_rng(seed)
@@ -75,12 +62,7 @@ def simulate_heston(params, seed=None):
 
     return times, S, v
 
-def simulate_merton(params, seed=None):
-    # dS = mu * S * dt + sigma * S * dW + J * S * dN
-    # N Poisson rate and jump size J = exp(Y)-1 with Y being 
-    # normally distributed N(mu, sigma²), so that when Y=0
-    # there is no jump, if Y<0, the jump reduces the price, and
-    # if Y>0, the jump boosts the price
+def simulate_merton(params, seed:int=None):
     mu, sigma, S0, lambda_j, mu_j, sigma_j, T, dt, n_paths = (params.mu, params.sigma, params.S0, params.lambda_j, params.mu_j, params.sigma_j, params.T, params.dt, params.n_paths)
     rng = np.random.default_rng(seed)
 
