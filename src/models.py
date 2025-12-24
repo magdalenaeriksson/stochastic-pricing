@@ -1,4 +1,6 @@
-# stochastic models (GBM, OU, etc. )
+"""
+Dataclasses defining model parameters.
+"""
 from dataclasses import dataclass
 
 @dataclass
