@@ -1,9 +1,11 @@
-# helper functions
+"""
+Helper functions for data loading & preprocessing, and variance.
+"""
 import pandas as pd
 import numpy as np
 
-def realized_variance(S, dt=1/252):
-    # compute log-returns and realized variance
+def realized_variance(S:np.ndarray, dt:float=1/252):
+    """ compute log-returns and realized variance """
     S = np.asarray(S)
     log_returns = np.diff(np.log(S))
     v_raw = log_returns**2 / dt # log-returns per year (convention)
@@ -12,7 +14,7 @@ def realized_variance(S, dt=1/252):
 
 
 def load_prices(path:str, price_col:str) -> np.ndarray:
-    # load historical price data from CSV file
+    """ load historical price data from CSV file """
     df = pd.read_csv(path, thousands=",")
 
     if price_col not in df.columns:
