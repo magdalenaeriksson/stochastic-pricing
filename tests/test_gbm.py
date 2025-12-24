@@ -1,4 +1,3 @@
-import numpy as np
 from src.simulation import simulate_gbm
 from src.models import GBMParams
 
