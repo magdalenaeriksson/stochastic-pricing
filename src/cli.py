@@ -1,10 +1,13 @@
-import argparse    
+"""
+Argparser for model arguments, simulation setup and calibration specifics.
+"""
+import argparse
 
 def build_parser():
     parser = argparse.ArgumentParser()
 
     # model choice
-    parser.add_argument("--model", type=str, default="GBM", help="model to simulate: GBM, OU, Heston or Merton")
+    parser.add_argument("--model", choices=["GBM", "OU", "Heston", "Merton"], default="GBM", help="model to simulate: GBM, OU, Heston or Merton")
     
     # generic parameters
     parser.add_argument("--mu",    type=float, default=0.05,  )
@@ -29,7 +32,8 @@ def build_parser():
     # simulation setup
     parser.add_argument("--T",       type=float, default=1.0,   )
     parser.add_argument("--dt",      type=float, default=1/252, )
-    parser.add_argument("--n_paths", type=int,   default=10,  )
+    parser.add_argument("--n_paths", type=int,   default=10,    )
+    parser.add_argument("--seed",    type=int,   default=None,  help="random seed (None = non-reproducible runs)")
 
     # calibration & data file specs
     parser.add_argument("--calibrated", action="store_true", help="use calibrated parameters instead of manually set params.")
