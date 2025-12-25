@@ -1,6 +1,6 @@
 # Stochastic asset price modelling, calibration and risk analysis
 
-This project implements and compares four stochastic asset price models (GBM, OU, Heston and Merton jump-diffusion), which includes calibration to real market data, risk analysis via Monte Carlo simulation, tail probabilities, Value-at-Risk (VaR), and expected shortfall (ES). All results are reproducible via the provided notebooks and CLI interface.
+This project implements and compares four stochastic asset price models (GBM, OU, Heston and Merton jump-diffusion), which includes calibration to real market data, risk analysis via Monte Carlo simulation, tail probabilities, Value-at-Risk (VaR), and expected shortfall (ES). All results are reproducible via the provided notebooks and CLI interface. A mathematical description of the implemented models, estimation methods, and risk measures is provided in [`docs/stochastic_models_estimation.pdf`](docs/stochastic_models_estimation.pdf).
 
 ## Motivation
 Classical models such as Geometric Brownian Motion (GBM) assume constant volatility and normally distributed returns. Real market returns, however, exhibit:
@@ -27,7 +27,7 @@ All models are calibrated to historical market data using moment-based and regre
 - Heston: variance dynamics estimated from realized volatility
 - Merton: jump intensity and jump size via moment matching
 
-Maximum likelihood estimation (MLE) is a natural extension and will be added in a future update. Full mathematical derivation of the formulas used for calibration can be found in a separate document (see docs/stochastic_models_estimation.pdf).
+Maximum likelihood estimation (MLE) represents a natural extension of the calibration framework and will be considered in future work. Analytical derivations of the calibration formulas are provided in the separate document [`docs/stochastic_models_estimation.pdf`](docs/stochastic_models_estimation.pdf).
 
 ## Risk analysis
 After calibration, each model is evaluated via Monte Carlo simulation:
@@ -87,6 +87,7 @@ python main.py --model GBM --mu 0.1 --sigma 0.3 --S0 100 --T 1.0 --dt 1/252 --da
 stochastic-pricing/
 │
 ├── data/           # historical data
+├── docs/           # mathematical derivations and model details
 ├── notebooks/      # exploratory analysis
 ├── plots/          # generated figures
 ├── src/            # simulation, calibration, analysis
