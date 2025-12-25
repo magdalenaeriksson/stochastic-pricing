@@ -1,9 +1,9 @@
 # Stochastic asset price modelling, calibration and risk analysis
 
-This project implements and compares four stochastic asset price models (GBM, OU, Heston and Merton jump-diffusion), which includes calibration to real market data, risk analysis via Monte Carlo simulation, tail probabilities, Value-at-Risk (VaR), and expected shortfall (ES). All results are reproducible via the provided notebooks and CLI interface. A mathematical description of the implemented models, estimation methods, and risk measures is provided in [`docs/stochastic_models_estimation.pdf`](docs/stochastic_models_estimation.pdf).
+This project implements and compares four stochastic asset price models (GBM, OU, Heston and Merton jump-diffusion), which includes calibration to real market data, risk analysis via Monte Carlo simulation, tail probabilities, value-at-risk (VaR), and expected shortfall (ES). All results are reproducible via the provided notebooks and CLI interface. A mathematical description of the implemented models, estimation methods, and risk measures is provided in [`docs/stochastic_models_estimation.pdf`](docs/stochastic_models_estimation.pdf).
 
 ## Motivation
-Classical models such as Geometric Brownian Motion (GBM) assume constant volatility and normally distributed returns. Real market returns, however, exhibit:
+Classical models such as Geometric Brownian motion (GBM) assume constant volatility and normally distributed returns. Real market returns, however, exhibit:
 - heavy tails
 - negative skew
 - volatility clustering
@@ -13,7 +13,7 @@ The aim of this project is to study how different stochastic models perform when
 
 ## Implemented models
 We consider the following price processes:
-- Geometric Brownian Motion (GBM) - a constant-volatility diffusion model
+- Geometric Brownian motion (GBM) - a constant-volatility diffusion model
 - Ornstein-Uhlenbeck process (OU) - mean-reverting process applied to log-prices
 - Heston stochastic volatility model - includes stochastic dynamics for both price and variance
 - Merton's jump-diffusion model - a diffusion model with Poisson-driven price jumps
@@ -34,7 +34,7 @@ After calibration, each model is evaluated via Monte Carlo simulation:
 - distribution of 1-day log-returns
 - tail probability comparison
 - QQ-plots against real market returns
-- value at risk (VaR) at 95% and 99%
+- value-at-risk (VaR) at 95% and 99%
 - expected shortfall (ES) at 95% and 99%
 
 ## Key findings
